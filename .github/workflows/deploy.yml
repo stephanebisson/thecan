@@ -1,0 +1,23 @@
+# filepath: /workspaces/thecan/.github/workflows/deploy.yml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Déclenche le workflow sur la branche principale
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Vérifiez le code source
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Déployez sur GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist  # Remplacez "dist" par le dossier contenant vos fichiers HTML/CSS/JS
